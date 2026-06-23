@@ -1,0 +1,34 @@
+.navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    gap: var(--space-lg);
+}
+
+.navigation > div {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+}
+
+.link-style {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 0.75rem;
+    transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.link-style:hover {
+    transform: translateY(-2px);
+    background: rgba(0, 0, 0, 0.05);
+}
+
+.link-style img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}

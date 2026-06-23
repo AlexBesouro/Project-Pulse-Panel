@@ -1,0 +1,55 @@
+.page-card {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xxs);
+    padding: var(--space-lg);
+    min-height: 240px;
+    border-radius: var(--radius-base);
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    box-shadow: var(--shadow-soft);
+    transition:
+        transform var(--transition-fast),
+        box-shadow var(--transition-fast),
+        border-color var(--transition-fast);
+    position: relative;
+}
+
+.page-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 22px 48px rgba(15, 23, 42, 0.14);
+    border-color: rgba(42, 101, 255, 0.26);
+}
+
+.page-card h2 {
+    margin: 0;
+    font-size: 1.3rem;
+    color: var(--color-primary-strong);
+}
+
+.page-card h3 {
+    margin: 0;
+    font-size: 1rem;
+    color: var(--color-muted);
+    font-weight: 500;
+}
+
+.page-card p {
+    margin: 0;
+    color: var(--color-text);
+    flex: 1;
+}
+
+.page-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    pointer-events: none;
+}
+
+.page-card-link {
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+}
