@@ -12,17 +12,7 @@
     background: #e6eeff;
     border: 1px solid var(--color-border);
     box-shadow: var(--shadow-soft);
-    transition:
-        transform var(--transition-fast),
-        box-shadow var(--transition-fast),
-        border-color var(--transition-fast);
     position: relative;
-}
-
-.about-card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 22px 48px rgba(15, 23, 42, 0.14);
-    border-color: rgba(42, 101, 255, 0.26);
 }
 
 .about-card h2 {

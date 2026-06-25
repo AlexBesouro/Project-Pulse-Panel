@@ -21,7 +21,7 @@ function Home() {
             title: "Data Sources",
             subHeader: "Connect Your Content",
             description: "Define and manage internet sources that supply real-time information for your widgets",
-            linkTo: "/data-sources",
+            linkTo: "/sources",
         },
     ];
     return (

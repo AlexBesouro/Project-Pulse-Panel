@@ -1,5 +1,6 @@
 :root {
-    color-scheme: light;
+    --header-height: 100px;
+    --footer-height: 75px;
     --color-bg: #f5f8ff;
     --color-surface: #ffffff;
     --color-surface-alt: #eff4ff;
@@ -10,6 +11,8 @@
     --color-text: #12263b;
     --color-muted: #5b708d;
     --color-shadow: 0 20px 40px rgba(32, 45, 80, 0.08);
+    --color-header-bg: #ffffff;
+    --color-footer-bg: #ffffff;
     --radius-base: 20px;
     --radius-sm: 14px;
     --radius-pill: 999px;
@@ -24,6 +27,21 @@
     --space-xl: 3rem;
     --transition-fast: 180ms ease;
     --shadow-soft: 0 18px 40px rgba(15, 23, 42, 0.08);
+}
+
+body[data-theme="dark"] {
+    --color-bg: #07111f;
+    --color-surface: #0d1728;
+    --color-surface-alt: #131f35;
+    --color-border: rgba(138, 180, 255, 0.2);
+    --color-primary: #7aa2ff;
+    --color-primary-strong: #9abfff;
+    --color-primary-soft: rgba(122, 162, 255, 0.2);
+    --color-text: #eef4ff;
+    --color-muted: #9bb0cb;
+    --color-shadow: 0 20px 40px rgba(2, 8, 23, 0.45);
+    --color-header-bg: #0a1220;
+    --color-footer-bg: #0a1220;
 }
 
 * {
@@ -43,6 +61,9 @@ body {
     background: radial-gradient(circle at top, rgba(42, 101, 255, 0.12), transparent 35%), var(--color-bg);
     color: var(--color-text);
     line-height: 1.6;
+    transition:
+        background-color var(--transition-fast),
+        color var(--transition-fast);
 }
 
 img,
@@ -84,5 +105,5 @@ body::before {
 }
 
 main {
-    min-height: calc(100vh - 144px);
+    min-height: 100dvh - var(--footer-height) - var(--header-height);
 }

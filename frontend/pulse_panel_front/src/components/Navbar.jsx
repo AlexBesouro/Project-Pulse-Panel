@@ -33,6 +33,7 @@ function Navbar() {
                     <img src={settingsIcon} alt="Settings Pulse Panel" />
                 </Link>
                 <button
+                    type="button"
                     className={styles["link-style"]}
                     data-tooltip="Login to Pulse Panel"
                     onClick={() => setIsModalOpen(true)}
