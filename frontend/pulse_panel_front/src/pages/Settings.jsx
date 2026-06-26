@@ -1,9 +1,7 @@
-import { data } from "react-router-dom";
 import styles from "./Settings.module.css";
-import { useEffect, useState } from "react";
-const MOCK_USER_DB = {
-    passwordHash: "123456",
-};
+import { useState } from "react";
+import { useTheme } from "../hooks/useTheme";
+
 function Settings() {
     const [passwordData, setPasswordData] = useState({
         currentPassword: "",
@@ -13,20 +11,7 @@ function Settings() {
     const [error, setError] = useState("");
 
     // If there is no theme in localStorage checkin browser's theme
-    const [theme, setTheme] = useState(() => {
-        const savedTheme = localStorage.getItem("theme");
-        if (savedTheme) return savedTheme;
-        const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-        return prefersDark ? "dark" : "light";
-    });
-    useEffect(() => {
-        document.body.setAttribute("data-theme", theme);
-        localStorage.setItem("theme", theme);
-    });
-    // prev - callback function to check actual theme
-    const toggleTheme = () => {
-        setTheme((prev) => (prev === "light" ? "dark" : "light"));
-    };
+    const { theme, toggleTheme } = useTheme();
     const handleInputChange = (e) => {
         const { name, value } = e.target;
         setPasswordData((prev) => ({ ...prev, [name]: value }));
@@ -70,7 +55,7 @@ function Settings() {
                     newPassword: passwordData.newPassword,
                 }),
             });
-            const data = response.json();
+            const data = await response.json();
             if (!response.ok) {
                 // Message from back-end
                 if (data.message === "Incorrect password") {

@@ -1,0 +1,12 @@
+.main-with-sidebar {
+    display: flex;
+    align-items: stretch;
+    min-height: calc(100dvh - var(--header-height) - var(--footer-height));
+}
+
+.page-content {
+    flex: 1;
+    min-width: 0;
+    /* Возвращаем отступы для контента страницы здесь */
+    padding: var(--space-lg);
+}

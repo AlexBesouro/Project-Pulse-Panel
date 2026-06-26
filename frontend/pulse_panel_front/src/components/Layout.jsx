@@ -13,9 +13,7 @@ function Layout() {
             </header>
 
             <main className={styles["main"]}>
-                <div className={styles["main-container"]}>
-                    <Outlet />
-                </div>
+                <Outlet />
             </main>
 
             <footer className={styles["footer"]}>

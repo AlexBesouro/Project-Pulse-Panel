@@ -1,5 +1,6 @@
 .settings {
     max-width: 760px;
+    min-width: 600px;
     margin: 2rem auto;
     padding: 2rem;
     display: flex;
@@ -60,11 +61,11 @@
 }
 
 .input-error {
-    border-color: #ef4444 !important;
+    border-color: var(--color-danger) !important;
 }
 
 .error-text {
-    color: #ef4444;
+    color: var(--color-danger);
     font-size: 0.9rem;
 }
 
@@ -82,7 +83,7 @@
 
 .submit-btn {
     align-self: flex-start;
-    color: #fff;
+    color: var(--color-on-primary);
     background: linear-gradient(135deg, var(--color-primary), var(--color-primary-strong));
 }
 

@@ -17,8 +17,8 @@
 
 .page-card:hover {
     transform: translateY(-2px);
-    box-shadow: 0 22px 48px rgba(15, 23, 42, 0.14);
-    border-color: rgba(42, 101, 255, 0.26);
+    box-shadow: 0 22px 48px var(--color-shadow-strong);
+    border-color: var(--color-primary);
 }
 
 .page-card h2 {

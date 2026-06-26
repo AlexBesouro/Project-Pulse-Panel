@@ -9,7 +9,7 @@
     left: 0;
     width: 100vw;
     height: 100vh;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: var(--color-overlay);
     z-index: 1000;
 }
 
@@ -85,7 +85,7 @@
     border: none;
     border-radius: 0.85rem;
     background: linear-gradient(135deg, var(--color-primary), var(--color-primary-strong));
-    color: #ffffff;
+    color: var(--color-on-primary);
     font-weight: 700;
     cursor: pointer;
     transition:

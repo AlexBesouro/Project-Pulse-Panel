@@ -18,10 +18,6 @@ function Widgets() {
             widgetType: "file",
         },
     ];
-    return (
-        <div className={styles["widgets"]}>
-            <Sidebar children={widgetsList} />
-        </div>
-    );
+    return <div className={styles["widgets"]}></div>;
 }
 export default Widgets;

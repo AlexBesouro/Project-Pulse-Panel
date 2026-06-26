@@ -1,31 +1,27 @@
 .sidebar {
-    position: absolute;
-
-    left: 0;
-    top: var(--header-height);
-    bottom: var(--footer-height);
+    margin: 0;
     display: flex;
     flex-direction: column;
     width: clamp(240px, 25vw, 325px);
     padding: var(--space-lg);
-    padding-left: calc(var(--space-lg) * 2);
-    margin-left: calc(var(--space-lg) * -1);
-    background: linear-gradient(180deg, rgba(15, 23, 42, 0.96), rgba(30, 41, 59, 0.96));
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    box-shadow: 0 20px 40px rgba(2, 6, 23, 0.25);
-    color: #f8fafc;
+    background: linear-gradient(180deg, var(--color-sidebar-bg-start), var(--color-sidebar-bg-end));
+    border-right: 1px solid var(--color-sidebar-border); /* Бордер только справа */
+    box-shadow: 0 20px 40px var(--color-sidebar-shadow);
+    color: var(--color-sidebar-text);
     backdrop-filter: blur(12px);
     overflow: hidden;
     align-self: stretch;
 }
 
 .sidebar-list-title {
-    margin: 0 0 var(--space-md);
+    margin: 0 0 var(--space-lg) 0;
+    text-align: center;
     font-size: 1.05rem;
     font-weight: 700;
     letter-spacing: 0.04em;
     text-transform: uppercase;
-    color: #e2e8f0;
+    color: var(--color-sidebar-text);
+    width: 100%;
 }
 
 .sidebar-content {
@@ -33,7 +29,7 @@
     flex: 1;
     flex-direction: column;
     gap: var(--space-sm);
-    color: rgba(226, 232, 240, 0.9);
+    color: var(--color-sidebar-muted);
 }
 
 .sidebar-item {
@@ -44,17 +40,17 @@
         background-color 180ms ease,
         color 180ms ease,
         transform 180ms ease;
-    color: rgba(226, 232, 240, 0.9);
+    color: var(--color-sidebar-muted);
 }
 
 .sidebar-item:hover {
-    background: rgba(255, 255, 255, 0.12);
-    color: #ffffff;
+    background: var(--color-sidebar-hover);
+    color: var(--color-sidebar-text);
     transform: translateX(2px);
 }
 
 .active {
-    background: linear-gradient(90deg, rgba(42, 101, 255, 0.95), rgba(59, 130, 246, 0.9));
-    color: #ffffff;
-    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.16);
+    background: linear-gradient(90deg, var(--color-sidebar-active-start), var(--color-sidebar-active-end));
+    color: var(--color-sidebar-text);
+    box-shadow: inset 0 0 0 1px var(--color-sidebar-border);
 }

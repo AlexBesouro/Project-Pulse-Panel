@@ -18,10 +18,6 @@ function Sources() {
             sourcesLink: "urlurlurl",
         },
     ];
-    return (
-        <div className={styles["sources"]}>
-            <Sidebar children={sourcesList} />
-        </div>
-    );
+    return <div className={styles["sources"]}></div>;
 }
 export default Sources;
