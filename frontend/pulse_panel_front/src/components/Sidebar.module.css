@@ -2,7 +2,7 @@
     margin: 0;
     display: flex;
     flex-direction: column;
-    width: clamp(240px, 25vw, 325px);
+    width: clamp(175px, 20vw, 325px);
     padding: var(--space-lg);
     background: linear-gradient(180deg, var(--color-sidebar-bg-start), var(--color-sidebar-bg-end));
     border-right: 1px solid var(--color-sidebar-border); /* Бордер только справа */

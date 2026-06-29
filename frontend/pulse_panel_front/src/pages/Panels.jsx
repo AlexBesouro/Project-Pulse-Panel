@@ -1,5 +1,6 @@
 import styles from "./Panels.module.css";
 import { Button } from "../components/Button";
+import { FieldForm } from "../components/forms/FieldForm";
 import { useState } from "react";
 function Panels() {
     const [panelsData, setPanelsData] = useState({
@@ -30,137 +31,120 @@ function Panels() {
     return (
         <div className={styles["panels"]}>
             <div className={styles["form-container"]}>
-                <div className={styles["panel-config-form"]}>
-                    <h3>Panel Configuration</h3>
-                    <form id="panel-form" onSubmit={handleFormSubmit} className={styles["form-content"]}>
-                        <div className={styles["config-form"]}>
-                            <div className={styles["form-row"]}>
-                                <label className={styles["row-label"]}>Panel Name</label>
-                                <div className={styles["row-content"]}>
+                <h3>Panel Configuration</h3>
+                <form id="panel-form" onSubmit={handleFormSubmit} className={styles["form-content"]}>
+                    <div className={styles["panel-config-form"]}>
+                        {/* Имя */}
+                        <div className={styles["form-row"]}>
+                            <FieldForm
+                                type="text"
+                                name="Panel's name"
+                                placeholder="Enter a panel's name..."
+                                value={panelsData.panelName}
+                                onChange={handleInputChange}
+                                desctription="A descriptive name for your panel"
+                            />
+                        </div>
+
+                        <div className={styles["form-row-url"]}>
+                            <FieldForm
+                                type="text"
+                                name="Panel's URL"
+                                placeholder="custom-url"
+                                value={panelsData.panelUrl}
+                                onChange={handleInputChange}
+                                desctription="Panel is visible only for you (login required)"
+                            />
+                            <button type="button" onClick={handleCopyUrl} className={styles["copy-button"]}>
+                                Copy
+                            </button>
+                        </div>
+
+                        <div className={styles["form-row-autorefresh"]}>
+                            <label className={styles["row-label-fallback"]}>Auto-refresh</label>
+                            <div className={styles["slider-wrapper"]}>
+                                <label className={styles["switch"]}>
                                     <input
-                                        type="text"
-                                        name="panelName"
-                                        placeholder="Enter panel name"
-                                        value={panelsData.panelName}
+                                        type="checkbox"
+                                        name="autoRefresh"
+                                        checked={panelsData.autoRefresh}
                                         onChange={handleInputChange}
-                                        className={styles["text-input"]}
                                     />
-                                    <div className={styles["form-help-text"]}>A descriptive name for your panel</div>
-                                </div>
+                                    <span className={styles["slider"]}></span>
+                                </label>
+                                <span className={styles["slider-text"]}>Enable auto-refresh</span>
+                                <input
+                                    type="text"
+                                    placeholder="--:--:--"
+                                    className={styles["time-input"]}
+                                    disabled={!panelsData.autoRefresh}
+                                />
                             </div>
-
-                            <div className={styles["form-row"]}>
-                                <label className={styles["row-label"]}>Panel URL</label>
-                                <div className={styles["row-content"]}>
-                                    <div className={styles["url-input-wrapper"]}>
-                                        <span className={styles["url-prefix"]}>http://localhost:5173/panels/</span>
-                                        <input
-                                            type="text"
-                                            name="panelUrl"
-                                            placeholder="custom-url"
-                                            value={panelsData.panelUrl}
-                                            onChange={handleInputChange}
-                                            className={styles["url-input"]}
-                                        />
-                                        <button type="button" onClick={handleCopyUrl} className={styles["copy-button"]}>
-                                            Copy
-                                        </button>
-                                    </div>
-                                    <div className={styles["form-help-text"]}>
-                                        Panel is visible only for you (login required)
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div className={styles["form-row"]}>
-                                <label className={styles["row-label"]}>Auto-refresh</label>
-                                <div className={styles["row-content"]}>
-                                    <div className={styles["switch-container"]}>
-                                        <label className={styles["switch"]}>
-                                            <input
-                                                type="checkbox"
-                                                name="autoRefresh"
-                                                checked={panelsData.autoRefresh}
-                                                onChange={handleInputChange}
-                                            />
-                                            <span className={styles["slider"]}></span>
-                                        </label>
-                                        <span className={styles["slider-text"]}>Enable auto-refresh</span>
-                                        <input
-                                            type="text"
-                                            placeholder="--:--:--"
-                                            className={styles["time-input"]}
-                                            disabled={!panelsData.autoRefresh}
-                                        />
-                                    </div>
-                                    <div className={styles["form-help-text"]}>
-                                        How often the panel should refresh itself in your browser
-                                    </div>
-                                </div>
+                            <div
+                                title="How often the panel should refresh itself in your browser"
+                                className={styles["form-description-fallback"]}
+                            >
+                                How often the panel should refresh itself in your browser
                             </div>
                         </div>
-                        <div className={styles["panel-content-form"]}>
-                            <div className={styles["builder-container"]}>
-                                <Button
-                                    actionType="redirect"
-                                    type="button"
-                                    form="panel-form"
-                                    onClick={console.log("Will redirect to builder page")}
+                    </div>
+
+                    <div className={styles["panel-content-form"]}>
+                        <div className={styles["builder-container"]}>
+                            <h3 style={{ border: "none", padding: 0 }}>Panel Content</h3>
+                            <Button
+                                actionType="redirect"
+                                type="button"
+                                form="panel-form"
+                                onClick={() => console.log("Will redirect to builder page")}
+                            />
+                        </div>
+
+                        <div className={styles["panel-config-form"]}>
+                            <div className={styles["form-row"]}>
+                                <FieldForm
+                                    type="number"
+                                    name="Panel's position X"
+                                    placeholder="Enter the panel's X coordinate"
+                                    value={panelsData.startPointX}
+                                    onChange={handleInputChange}
+                                    desctription="Panel's top-left point X"
                                 />
                             </div>
                             <div className={styles["form-row"]}>
-                                <label className={styles["row-label"]}>Panel position X</label>
-                                <div className={styles["row-content"]}>
-                                    <input
-                                        type="number"
-                                        name="startPointX"
-                                        placeholder="Enter panel's X coordinate"
-                                        value={panelsData.startPointX}
-                                        onChange={handleInputChange}
-                                        className={styles["number-input"]}
-                                    />
-                                    <div className={styles["form-help-text"]}>Starting top left point X</div>
-                                </div>
-                                <label className={styles["row-label"]}>Panel position Y</label>
-                                <div className={styles["row-content"]}>
-                                    <input
-                                        type="number"
-                                        name="startPointY"
-                                        placeholder="Enter panel's Y coordinate"
-                                        value={panelsData.startPointY}
-                                        onChange={handleInputChange}
-                                        className={styles["number-input"]}
-                                    />
-                                    <div className={styles["form-help-text"]}>Starting top left point Y</div>
-                                </div>
-                                <label className={styles["row-label"]}>Panel width</label>
-                                <div className={styles["row-content"]}>
-                                    <input
-                                        type="number"
-                                        name="width"
-                                        placeholder="Enter panel's width"
-                                        value={panelsData.width}
-                                        onChange={handleInputChange}
-                                        className={styles["number-input"]}
-                                    />
-                                    <div className={styles["form-help-text"]}>Enter panel's width in px </div>
-                                </div>
-                                <label className={styles["row-label"]}>Panel height</label>
-                                <div className={styles["row-content"]}>
-                                    <input
-                                        type="number"
-                                        name="height"
-                                        placeholder="Enter panel's height"
-                                        value={panelsData.height}
-                                        onChange={handleInputChange}
-                                        className={styles["number-input"]}
-                                    />
-                                    <div className={styles["form-help-text"]}>Enter panel's height in px </div>
-                                </div>
+                                <FieldForm
+                                    type="number"
+                                    name="Panel's position Y"
+                                    placeholder="Enter the panel's Y coordinate"
+                                    value={panelsData.startPointY}
+                                    onChange={handleInputChange}
+                                    desctription="Panel's top-left point Y"
+                                />
+                            </div>
+                            <div className={styles["form-row"]}>
+                                <FieldForm
+                                    type="number"
+                                    name="Panel's width"
+                                    placeholder="Enter the panel's width"
+                                    value={panelsData.width}
+                                    onChange={handleInputChange}
+                                    desctription="Panel's width in px"
+                                />
+                            </div>
+                            <div className={styles["form-row"]}>
+                                <FieldForm
+                                    type="number"
+                                    name="Panel's height"
+                                    placeholder="Enter the panel's height"
+                                    value={panelsData.height}
+                                    onChange={handleInputChange}
+                                    desctription="Panel's height in px"
+                                />
                             </div>
                         </div>
-                    </form>
-                </div>
+                    </div>
+                </form>
+
                 <div className={styles["cancel-save-container"]}>
                     <Button actionType="cancel" type="button" form="panel-form" onClick={handleCancel} />
                     <Button actionType="save" type="submit" form="panel-form" />
