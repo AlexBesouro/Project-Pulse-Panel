@@ -1,8 +1,8 @@
 import styles from "./Button.module.css";
-import saveIcon from "../assets/icons/save.png";
-import cancelIcon from "../assets/icons/cancel.png";
-import deleteIcon from "../assets/icons/delete.png";
-import brushIcon from "../assets/icons/brush.png";
+import saveIcon from "../../assets/icons/save.png";
+import cancelIcon from "../../assets/icons/cancel.png";
+import deleteIcon from "../../assets/icons/delete.png";
+import brushIcon from "../../assets/icons/brush.png";
 function Button({ actionType, type = "button", ...props }) {
     const config = {
         delete: { text: "Delete", style: "red", path: deleteIcon },

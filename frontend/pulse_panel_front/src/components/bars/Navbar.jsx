@@ -1,12 +1,12 @@
 import styles from "./Navbar.module.css";
 import { Link } from "react-router-dom";
-import homeIcon from "../assets/icons/home.jpg";
-import gitIcon from "../assets/icons/git.png";
-import infoIcon from "../assets/icons/info--v2.jpg";
-import settingsIcon from "../assets/icons/Settings.png";
-import loginIcon from "../assets/icons/login.jpg";
+import homeIcon from "../../assets/icons/home.jpg";
+import gitIcon from "../../assets/icons/git.png";
+import infoIcon from "../../assets/icons/info--v2.jpg";
+import settingsIcon from "../../assets/icons/Settings.png";
+import loginIcon from "../../assets/icons/login.jpg";
 import { useState } from "react";
-import { LoginModal } from "./LoginModal";
+import { LoginModal } from "../LoginModal";
 
 function Navbar() {
     const [isModalOpen, setIsModalOpen] = useState(false);

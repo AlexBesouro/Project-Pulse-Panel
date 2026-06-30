@@ -1,13 +1,15 @@
 import styles from "./FieldForm.module.css";
 
-function FieldForm({ type, name, desctription, onChange, ...props }) {
+function FieldForm({ type, label, name, description, onChange, ...props }) {
     return (
         <div className={styles["row-container"]}>
-            <label className={styles["row-label"]} htmlFor={name}>
-                {name}
-            </label>
+            {label && (
+                <label className={styles["row-label"]} htmlFor={name}>
+                    {label}
+                </label>
+            )}
             <div className={styles["row-content"]}>
-                {name === "Panel's URL" && <span className={styles["url-prefix"]}>http://localhost:5173/panels/</span>}
+                {name === "panelUrl" && <span className={styles["url-prefix"]}>http://localhost:5173/panels/</span>}
                 <input
                     id={name}
                     type={type}
@@ -23,9 +25,9 @@ function FieldForm({ type, name, desctription, onChange, ...props }) {
                     {...props}
                 />
             </div>
-            {desctription && (
-                <div title={desctription} className={styles["form-description"]}>
-                    {desctription}
+            {description && (
+                <div title={description} className={styles["form-description"]}>
+                    {description}
                 </div>
             )}
         </div>

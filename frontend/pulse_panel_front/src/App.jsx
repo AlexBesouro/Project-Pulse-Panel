@@ -1,6 +1,6 @@
 import { Routes, Route } from "react-router-dom";
-import { Layout } from "./components/Layout.jsx";
-import { SidebarLayout } from "./components/SidebarLayout.jsx";
+import { Layout } from "./components/layouts/Layout.jsx";
+import { SidebarLayout } from "./components/layouts/SidebarLayout.jsx";
 import { useTheme } from "./hooks/useTheme.jsx";
 import "./App.css";
 import { lazy, Suspense } from "react";

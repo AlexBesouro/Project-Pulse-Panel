@@ -1,5 +1,5 @@
 import styles from "./About.module.css";
-import { AboutCard } from "../components/AboutCard";
+import { AboutCard } from "../components/cards/AboutCard";
 import dataSources from "../assets/images/DataSources.png";
 import engine from "../assets/images/engine.png";
 import widgets from "../assets/images/Widgets.png";

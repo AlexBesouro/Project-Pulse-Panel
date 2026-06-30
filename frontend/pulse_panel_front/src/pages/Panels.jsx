@@ -1,5 +1,5 @@
 import styles from "./Panels.module.css";
-import { Button } from "../components/Button";
+import { Button } from "../components/buttons/Button";
 import { FieldForm } from "../components/forms/FieldForm";
 import { useState } from "react";
 function Panels() {
@@ -7,6 +7,7 @@ function Panels() {
         panelName: "",
         panelUrl: "",
         autoRefresh: false,
+        refreshRate: "",
         startPointX: 0,
         startPointY: 100,
         width: 300,
@@ -31,29 +32,30 @@ function Panels() {
     return (
         <div className={styles["panels"]}>
             <div className={styles["form-container"]}>
-                <h3>Panel Configuration</h3>
+                <h3 className={styles["title-container"]}>Panel Configuration</h3>
                 <form id="panel-form" onSubmit={handleFormSubmit} className={styles["form-content"]}>
                     <div className={styles["panel-config-form"]}>
-                        {/* Имя */}
                         <div className={styles["form-row"]}>
                             <FieldForm
                                 type="text"
-                                name="Panel's name"
+                                label="Panel name"
+                                name="panelName"
                                 placeholder="Enter a panel's name..."
                                 value={panelsData.panelName}
                                 onChange={handleInputChange}
-                                desctription="A descriptive name for your panel"
+                                description="A descriptive name for your panel"
                             />
                         </div>
 
                         <div className={styles["form-row-url"]}>
                             <FieldForm
                                 type="text"
-                                name="Panel's URL"
+                                label="Panel URL"
+                                name="panelUrl"
                                 placeholder="custom-url"
                                 value={panelsData.panelUrl}
                                 onChange={handleInputChange}
-                                desctription="Panel is visible only for you (login required)"
+                                description="Panel is visible only for you (login required)"
                             />
                             <button type="button" onClick={handleCopyUrl} className={styles["copy-button"]}>
                                 Copy
@@ -75,23 +77,26 @@ function Panels() {
                                 <span className={styles["slider-text"]}>Enable auto-refresh</span>
                                 <input
                                     type="text"
+                                    name="refreshRate"
                                     placeholder="--:--:--"
                                     className={styles["time-input"]}
+                                    value={panelsData.refreshRate}
+                                    onChange={handleInputChange}
                                     disabled={!panelsData.autoRefresh}
                                 />
                             </div>
                             <div
-                                title="How often the panel should refresh itself in your browser"
+                                title="How often the panel should refresh itself in your browser (sec)"
                                 className={styles["form-description-fallback"]}
                             >
-                                How often the panel should refresh itself in your browser
+                                How often the panel should refresh itself in your browser (sec)
                             </div>
                         </div>
                     </div>
 
                     <div className={styles["panel-content-form"]}>
                         <div className={styles["builder-container"]}>
-                            <h3 style={{ border: "none", padding: 0 }}>Panel Content</h3>
+                            <h3 className={styles["title-container"]}>Panel Content</h3>
                             <Button
                                 actionType="redirect"
                                 type="button"
@@ -108,7 +113,7 @@ function Panels() {
                                     placeholder="Enter the panel's X coordinate"
                                     value={panelsData.startPointX}
                                     onChange={handleInputChange}
-                                    desctription="Panel's top-left point X"
+                                    description="Panel's top-left point X"
                                 />
                             </div>
                             <div className={styles["form-row"]}>
@@ -118,7 +123,7 @@ function Panels() {
                                     placeholder="Enter the panel's Y coordinate"
                                     value={panelsData.startPointY}
                                     onChange={handleInputChange}
-                                    desctription="Panel's top-left point Y"
+                                    description="Panel's top-left point Y"
                                 />
                             </div>
                             <div className={styles["form-row"]}>
@@ -128,7 +133,7 @@ function Panels() {
                                     placeholder="Enter the panel's width"
                                     value={panelsData.width}
                                     onChange={handleInputChange}
-                                    desctription="Panel's width in px"
+                                    description="Panel's width in px"
                                 />
                             </div>
                             <div className={styles["form-row"]}>
@@ -138,7 +143,7 @@ function Panels() {
                                     placeholder="Enter the panel's height"
                                     value={panelsData.height}
                                     onChange={handleInputChange}
-                                    desctription="Panel's height in px"
+                                    description="Panel's height in px"
                                 />
                             </div>
                         </div>

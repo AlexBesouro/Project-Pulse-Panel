@@ -1,6 +1,6 @@
 import styles from "./Sidebar.module.css";
 import { useLocation } from "react-router-dom";
-import { useItem } from "../hooks/useItem";
+import { useItem } from "../../hooks/useItem";
 
 function Sidebar({ children }) {
     const location = useLocation(); // Get the current location object from React Router with special hook

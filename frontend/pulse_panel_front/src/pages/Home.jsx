@@ -1,5 +1,5 @@
 import styles from "./Home.module.css";
-import { PageCard } from "../components/PageCard";
+import { PageCard } from "../components/cards/PageCard";
 function Home() {
     const cards = [
         {
